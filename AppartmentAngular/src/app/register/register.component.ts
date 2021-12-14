@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
 
     this.registerForm = this.formBuilder.group({
-
+      UserName: ["", [Validators.required, Validators.minLength(4)]],
       FirstName: ["", [Validators.required, Validators.minLength(2)]],
       LastName: ["", [Validators.required, Validators.minLength(3)]],
       Email: ["", [Validators.required, Validators.minLength(6)]],
@@ -38,6 +38,7 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid)
       return;
 
+    var username = this.registerForm.controls["UserName"].value;
     var firstname = this.registerForm.controls["FirstName"].value;
     var lastname = this.registerForm.controls["LastName"].value;
     var email = this.registerForm.controls["Email"].value;
@@ -54,7 +55,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.authService.Register(firstname, lastname, email, password).then(data => {
+    this.authService.Register(username,firstname, lastname, email, password).then(data => {
       if (data.accessToken == "") {
         this.registerForm.controls["RepeatPassword"].setErrors({ somethingFailed: true })
       }

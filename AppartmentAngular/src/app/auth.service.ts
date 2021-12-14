@@ -34,7 +34,7 @@ export class AuthService {
   }
 
 
-  Register(_firstName: string, _lastName: string, _email: string, _password: string) {
+  Register(_userName: string,_firstName: string, _lastName: string, _email: string, _password: string) {
 
     var registerDto: RegisterDto = {
       accessToken: "",
@@ -44,7 +44,7 @@ export class AuthService {
       email: _email,
       password: _password,
       repeatPassword: "",
-      userName: "UNSET"
+      userName: _userName
     }
 
 

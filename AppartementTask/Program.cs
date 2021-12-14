@@ -31,6 +31,7 @@ builder.Services.AddScoped<JwtAuthService>();
 builder.Services.AddScoped<JwtTokenConfig>();
 builder.Services.AddScoped<Dao>();
 
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(

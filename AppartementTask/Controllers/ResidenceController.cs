@@ -20,7 +20,7 @@ namespace AppartementTask.Controllers
 
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateResidence(ResidenceDto residenceDto)
         {
             if (ModelState.IsValid)

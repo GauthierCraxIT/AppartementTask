@@ -18,6 +18,13 @@
   </div>
   <br /><br />
 
+  <input type="text" placeholder="Username" formControlName="UserName" />
+  <div *ngIf="form['UserName'].errors && submitted">
+    <div *ngIf="form['UserName'].hasError('required')">Username is required</div>
+    <div *ngIf="form['UserName'].hasError('minlength')">Username is too short</div>
+  </div>
+  <br /><br />
+
   <input type="text" placeholder="Email" formControlName="Email" />
   <div *ngIf="form['Email'].errors && submitted">
     <div *ngIf="form['Email'].hasError('required')">Email is required</div>
