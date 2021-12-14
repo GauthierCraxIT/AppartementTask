@@ -1,0 +1,11 @@
+{"email":"gauthier.cremers1@gmail.com",
+"password":"Test123/",
+"repeatpassword":"Test123/",
+"firstname":"gauthier",
+"lastname":"cremers",
+"username":"testgebruiker"}
+
+
+{"email":"gauthier.cremers1@gmail.com",
+"password":"Test123/"}
+
