@@ -6,6 +6,7 @@ namespace AppartementTask.Models
     {
         [Key]
         public int Id { get; set; }
+        public int Order { get; set; }
         public string FileName { get; set; }
         public virtual Residence Residence{ get; set; }
     }

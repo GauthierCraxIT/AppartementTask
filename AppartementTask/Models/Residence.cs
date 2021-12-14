@@ -16,6 +16,10 @@ namespace AppartementTask.Models
         [Required]
         public int Toilets { get; set; }
         [Required]
+        public int Storagerooms { get; set; }
+        [Required]
+        public int Officerooms { get; set; }
+        [Required]
         public ResidenceType ResidenceType { get; set; }
         [Required]
         public string Summary { get; set; }
