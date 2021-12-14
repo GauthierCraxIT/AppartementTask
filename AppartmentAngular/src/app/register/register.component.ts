@@ -20,11 +20,11 @@ export class RegisterComponent implements OnInit {
 
     this.registerForm = this.formBuilder.group({
 
-      FirstName: ["", [Validators.required]],
-      LastName: ["", [Validators.required]],
-      Email: ["", [Validators.required]],
-      Password: ["", [Validators.required]],
-      RepeatPassword: ["", [Validators.required]],
+      FirstName: ["", [Validators.required, Validators.minLength(2)]],
+      LastName: ["", [Validators.required, Validators.minLength(3)]],
+      Email: ["", [Validators.required, Validators.minLength(6)]],
+      Password: ["", [Validators.required, Validators.minLength(6)]],
+      RepeatPassword: ["", [Validators.required, Validators.minLength(6)]]
     })
   }
 
@@ -46,6 +46,11 @@ export class RegisterComponent implements OnInit {
 
     if (password !== repeatpassword) {
       this.registerForm.controls["RepeatPassword"].setErrors({ matchPasswords : true})
+      return;
+    }
+
+    if (email.indexOf('@') <= 0) {
+      this.registerForm.controls["Email"].setErrors({ validEmail: true})
       return;
     }
 
