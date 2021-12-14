@@ -46,11 +46,11 @@ namespace AppartementTask.Services
             return null;
         }
 
-        public bool Register(RegisterDto registerDto)
+        public SignInJwtResult Register(RegisterDto registerDto)
         {
             var person = this.mapper.Map<Person>(registerDto);
             if (person == null)
-                return false;
+                return null;
 
             var result = userManager.CreateAsync(person, registerDto.Password).Result;
             if (result.Succeeded)
@@ -59,11 +59,11 @@ namespace AppartementTask.Services
 
                 var jwtResult = DoJwtLogin(person);
                 if (jwtResult.Success)
-                    return true;
+                    return jwtResult;
             }
                 
             
-            return false;
+            return null;
         }
 
         private SignInJwtResult DoJwtLogin(Person person)

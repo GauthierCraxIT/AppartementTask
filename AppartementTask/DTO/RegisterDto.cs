@@ -1,6 +1,8 @@
-﻿namespace AppartementTask.DAO
+﻿using AppartementTask.DTO;
+
+namespace AppartementTask.DAO
 {
-    public class RegisterDto
+    public class RegisterDto : RefreshTokenDto
     {
         public string Email { get; set; }
 
@@ -13,5 +15,6 @@
         public string LastName { get; set; }
 
         public string UserName { get; set; }
+
     }
 }

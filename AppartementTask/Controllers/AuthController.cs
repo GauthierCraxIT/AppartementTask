@@ -44,9 +44,16 @@ namespace AppartementTask.Controllers
         [Route("register")]
         public IActionResult Register(RegisterDto registerDao)
         {
-            bool canRegister = this.authService.Register(registerDao);
-            if (canRegister)
-                return Ok();
+            SignInJwtResult result = this.authService.Register(registerDao);
+            if (result != null)
+            {
+                return Ok(new RegisterDto
+                {
+                    AccessToken = result.AccessToken,
+                    RefreshToken = result.RefreshToken,
+                    Email = result.Person.Email
+                });
+            }
 
             return BadRequest();
         }
