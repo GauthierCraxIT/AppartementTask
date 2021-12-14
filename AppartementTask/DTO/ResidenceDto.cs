@@ -18,6 +18,7 @@
         public int Bathrooms { get; set; }
         public int Bedrooms { get; set; }
         public int Toilets { get; set; }
+        public string Summary { get; set; }
         public ResidenceType ResidenceType { get; set; }
 
 

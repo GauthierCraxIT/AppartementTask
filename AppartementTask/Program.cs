@@ -76,6 +76,11 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
+builder.Services.AddAuthorization(x =>
+{
+    x.AddPolicy("admin", policy => policy.RequireRole("admin"));
+});
+
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())

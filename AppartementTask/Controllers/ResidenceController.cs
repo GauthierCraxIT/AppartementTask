@@ -39,7 +39,7 @@ namespace AppartementTask.Controllers
         }
 
         [HttpPut]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult UpdateResidence(ResidenceDto residenceDto)
         {
             if (ModelState.IsValid)
@@ -52,7 +52,7 @@ namespace AppartementTask.Controllers
         }
 
         [HttpDelete]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteResidence(ResidenceDto residenceDto)
         {
             if (ModelState.IsValid)

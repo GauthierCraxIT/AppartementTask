@@ -125,8 +125,10 @@ namespace AppartementTask.Services
             var claims = new[]
             {
                 new Claim("id",person.Id),
-                new Claim(ClaimTypes.Name,person.Email)
+                new Claim(ClaimTypes.Name,person.Email),
+                new Claim(ClaimTypes.Role, person.Email == "admin@gmail.com" ? "Admin" : "User")
             };
+
 
             return claims;
         }
