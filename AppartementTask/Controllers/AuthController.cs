@@ -1,4 +1,5 @@
 ﻿using AppartementTask.DAO;
+using AppartementTask.DTO;
 using AppartementTask.Models;
 using AppartementTask.Services;
 using Microsoft.AspNetCore.Http;
@@ -58,8 +59,22 @@ namespace AppartementTask.Controllers
             return BadRequest();
         }
 
+        [HttpPost]
+        [Route("updatetokens")]
+        public IActionResult UpdateTokens(RefreshTokenDto tokenDto)
+        {
+            SignInJwtResult result = this.authService.UpdateTokens(tokenDto.AccessToken, tokenDto.RefreshToken);
+            if (result != null)
+            {
+                return Ok(new RefreshTokenDto
+                {
+                    AccessToken = result.AccessToken,
+                    RefreshToken = result.RefreshToken
+                });
+            }
 
-
-
+            else
+                return null;
+        }
     }
 }

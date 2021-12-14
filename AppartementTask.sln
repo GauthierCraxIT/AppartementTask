@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppartementTask", "AppartementTask\AppartementTask.csproj", "{0580F4CB-400E-45C7-AC7E-374588D8CA46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppartementTask", "AppartementTask\AppartementTask.csproj", "{0580F4CB-400E-45C7-AC7E-374588D8CA46}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "AppartmentAngular", "AppartmentAngular\AppartmentAngular.esproj", "{9CF9F688-4A83-4474-9A31-95BAEBCD490D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,12 @@ Global
 		{0580F4CB-400E-45C7-AC7E-374588D8CA46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0580F4CB-400E-45C7-AC7E-374588D8CA46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0580F4CB-400E-45C7-AC7E-374588D8CA46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CF9F688-4A83-4474-9A31-95BAEBCD490D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CF9F688-4A83-4474-9A31-95BAEBCD490D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CF9F688-4A83-4474-9A31-95BAEBCD490D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9CF9F688-4A83-4474-9A31-95BAEBCD490D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CF9F688-4A83-4474-9A31-95BAEBCD490D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CF9F688-4A83-4474-9A31-95BAEBCD490D}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
