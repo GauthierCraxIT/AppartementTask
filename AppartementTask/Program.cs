@@ -31,6 +31,16 @@ builder.Services.AddScoped<JwtAuthService>();
 builder.Services.AddScoped<JwtTokenConfig>();
 builder.Services.AddScoped<Dao>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+      "CorsPolicy",
+      builder => builder.WithOrigins("http://localhost:4200")
+      .AllowAnyMethod()
+      .AllowAnyHeader()
+      .AllowCredentials());
+});
+
 var jwtTokenConfig = builder.Configuration.GetSection("jwt").Get<JwtTokenConfig>();
 builder.Services.AddSingleton(jwtTokenConfig);
 
@@ -74,6 +84,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
 app.UseAuthorization();
