@@ -2,7 +2,7 @@
 
 namespace AppartementTask.DAO
 {
-    public class LoginDto : RefreshTokenDto
+    public class LoginDto : UpdateTokenDto
     {
         public LoginDto() { }
         public LoginDto(string email, string password)

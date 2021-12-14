@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
+import { AuthjwtService } from './authjwt.service';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { AuthService } from './auth.service';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthjwtService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

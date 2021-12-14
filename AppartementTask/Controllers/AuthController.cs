@@ -61,12 +61,12 @@ namespace AppartementTask.Controllers
 
         [HttpPost]
         [Route("updatetokens")]
-        public IActionResult UpdateTokens(RefreshTokenDto tokenDto)
+        public IActionResult UpdateTokens(UpdateTokenDto tokenDto)
         {
             SignInJwtResult result = this.authService.UpdateTokens(tokenDto.AccessToken, tokenDto.RefreshToken);
             if (result != null)
             {
-                return Ok(new RefreshTokenDto
+                return Ok(new UpdateTokenDto
                 {
                     AccessToken = result.AccessToken,
                     RefreshToken = result.RefreshToken

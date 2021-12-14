@@ -1,6 +1,6 @@
 ﻿namespace AppartementTask.DTO
 {
-    public class RefreshTokenDto
+    public class UpdateTokenDto
     {
         public string AccessToken { get; set; }
         public string RefreshToken { get; set; }
