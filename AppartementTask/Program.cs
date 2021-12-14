@@ -2,10 +2,13 @@ using AppartementTask.CRUD;
 using AppartementTask.Models;
 using AppartementTask.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using System.Configuration;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,8 +27,12 @@ builder.Services.AddDbContext<Context>(options =>
 builder.Services.AddIdentity<Person, IdentityRole>().AddEntityFrameworkStores<Context>().AddDefaultTokenProviders();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<ResidenceService>();
-
+builder.Services.AddScoped<JwtAuthService>();
+builder.Services.AddScoped<JwtTokenConfig>();
 builder.Services.AddScoped<Dao>();
+
+var jwtTokenConfig = builder.Configuration.GetSection("jwt").Get<JwtTokenConfig>();
+builder.Services.AddSingleton(jwtTokenConfig);
 
 var mapperConfig = new MapperConfiguration(mc =>
 {
@@ -34,6 +41,29 @@ var mapperConfig = new MapperConfiguration(mc =>
 
 IMapper mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
+
+
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = true;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidIssuer = jwtTokenConfig.Issuer,
+        ValidateAudience = true,
+        ValidAudience = jwtTokenConfig.Audience,
+        ValidateIssuerSigningKey = true,
+        RequireExpirationTime = false,
+        ValidateLifetime = true,
+        ClockSkew = TimeSpan.Zero,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtTokenConfig.Secret))
+    };
+});
 
 
 var app = builder.Build();
@@ -45,6 +75,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseStaticFiles();
 app.MapControllers();

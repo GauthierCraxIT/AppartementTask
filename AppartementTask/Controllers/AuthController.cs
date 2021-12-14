@@ -1,4 +1,5 @@
 ﻿using AppartementTask.DAO;
+using AppartementTask.Models;
 using AppartementTask.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,9 +24,17 @@ namespace AppartementTask.Controllers
         public IActionResult Login(LoginDto loginDao)
         {
 
-            bool canLogin = this.authService.Login(loginDao);
-            if (canLogin)
-                return Ok();
+            SignInJwtResult result = this.authService.Login(loginDao);
+            if (result != null)
+            {
+                return Ok(new LoginDto
+                {
+                    AccessToken = result.AccessToken,
+                    RefreshToken = result.RefreshToken,
+                    Email = result.Person.Email
+                });
+            }
+                
 
             return BadRequest();
         }
@@ -41,6 +50,8 @@ namespace AppartementTask.Controllers
 
             return BadRequest();
         }
+
+
 
 
     }

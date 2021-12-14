@@ -1,5 +1,6 @@
 ﻿using AppartementTask.DAO;
 using AppartementTask.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,7 @@ namespace AppartementTask.Controllers
 
 
         [HttpPost]
+        [Authorize]
         public IActionResult CreateResidence(ResidenceDto residenceDto)
         {
             if (ModelState.IsValid)
@@ -27,7 +29,6 @@ namespace AppartementTask.Controllers
                 return Created("api/residence", residenceDto);
             }
 
-            
             return BadRequest();
         }
 
@@ -38,6 +39,7 @@ namespace AppartementTask.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public IActionResult UpdateResidence(ResidenceDto residenceDto)
         {
             if (ModelState.IsValid)
@@ -50,6 +52,7 @@ namespace AppartementTask.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         public IActionResult DeleteResidence(ResidenceDto residenceDto)
         {
             if (ModelState.IsValid)
