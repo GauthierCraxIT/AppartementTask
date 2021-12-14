@@ -83,7 +83,7 @@ namespace AppartementTask.Services
             return result;
         }
 
-        private SignInJwtResult CreateSignInJwtResult(string AccessToken, string RefreshToken)
+        private SignInJwtResult UpdateTokens(string AccessToken, string RefreshToken)
         {
             ClaimsPrincipal claimsPrincipal = jwtAuthService.GetPrincipalFromToken(AccessToken);
             SignInJwtResult result = new SignInJwtResult();

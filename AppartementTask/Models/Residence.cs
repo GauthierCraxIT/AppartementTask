@@ -17,7 +17,8 @@ namespace AppartementTask.Models
         public int Toilets { get; set; }
         [Required]
         public ResidenceType ResidenceType { get; set; }
-
-        public virtual Person Person { get; set; }
+        [Required]
+        public string Summary { get; set; }
+        public virtual ICollection<Picture> Pictures { get; set; }
     }
 }
