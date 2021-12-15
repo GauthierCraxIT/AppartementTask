@@ -15,5 +15,7 @@ namespace AppartementTask.Models
         public virtual DbSet<Person> People { get; set; }
 
         public virtual DbSet<Residence> Residences { get; set; }
+
+        public virtual DbSet<Picture> Pictures { get; set; }
     }
 }

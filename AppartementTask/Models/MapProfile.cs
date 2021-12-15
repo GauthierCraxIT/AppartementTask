@@ -1,4 +1,5 @@
 ﻿using AppartementTask.DAO;
+using AppartementTask.DTO;
 using AutoMapper;
 
 namespace AppartementTask.Models
@@ -12,6 +13,11 @@ namespace AppartementTask.Models
 
             CreateMap<ResidenceDto, Residence>();
             CreateMap<Residence, ResidenceDto>();
+
+            CreateMap<PictureDto, Picture>();
+            CreateMap<Picture, PictureDto>();
+
+
         }
     }
 }

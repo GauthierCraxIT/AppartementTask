@@ -9,11 +9,13 @@ namespace AppartementTask.Services
     {
 
         public Dao residenceDao { get; set; }
+        public Dao pictureDao { get; set; }
         public IMapper mapper { get; set; }
 
-        public ResidenceService(Dao residenceDao, IMapper mapper)
+        public ResidenceService(Dao residenceDao, Dao pictureDao, IMapper mapper)
         {
             this.residenceDao = residenceDao;
+            this.pictureDao = pictureDao;
             this.mapper = mapper;
         }
 
@@ -21,7 +23,28 @@ namespace AppartementTask.Services
         {
             var residence = this.mapper.Map<Residence>(dto);
             this.residenceDao.Create<Residence>(residence);
-            
+
+
+            dto.Pictures.ForEach(x =>
+            {
+                //save the pics TEMP HARDCODE
+
+
+                var path = "C:/Users/gauth/source/repos/AppartementTask/AppartementTask/wwwroot/images/";
+
+                if (!Directory.Exists(Path.Combine(path, residence.Name)))
+                    Directory.CreateDirectory(Path.Combine(path,residence.Name));
+
+                byte[] imageBytes = Convert.FromBase64String(x.BasePath.Replace("data:image/png;base64,", ""));
+                File.WriteAllBytes(Path.Combine(path, residence.Name, x.FileName), imageBytes);
+
+
+
+                var pic = this.mapper.Map<Picture>(x);
+                pic.Residence = residence;
+
+                this.pictureDao.Create<Picture>(pic);
+            });
         }
 
         public List<ResidenceDto> GetResidences()

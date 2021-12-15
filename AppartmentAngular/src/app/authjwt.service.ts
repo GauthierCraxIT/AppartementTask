@@ -31,7 +31,6 @@ export class AuthjwtService {
     };
 
     this.http.post("updatetokens", updateTokenDto, { observe: 'response' }).subscribe(response => {
-
       var res = response.body as UpdateTokenDto;
       localStorage.setItem("refreshtoken", res.RefreshToken);
       localStorage.setItem("accesstoken", res.AccessToken);

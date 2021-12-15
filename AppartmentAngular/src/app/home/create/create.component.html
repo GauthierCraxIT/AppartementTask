@@ -1,17 +1,71 @@
 
+<div class="container" *ngIf="router.url === '/home/create'">
+
+  <form [formGroup]="listingForm" (ngSubmit)="onSubmit()">
+
+    <div class="child1">
+      <p>New listing</p>
+
+      <mat-label>Listing name</mat-label><br />
+      <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="Name" formControlName="Name" />
+      </mat-form-field>
 
 
-<form *ngIf="router.url === '/create'">
-
-  <input type="text" placeholder="name" />
-
-  <input type="text" placeholder="location" />
-
-  <input type="file" multiple="multiple" accept="image/*" (change)="processImages($event)" />
-</form>
+      <mat-label>Listing Description</mat-label><br />
+      <mat-form-field appearance="outline">
+        <textarea matInput type="text" placeholder="Description" formControlName="Summary"></textarea>
+      </mat-form-field>
 
 
+      <p>Facilities</p>
 
-  <div *ngFor="let image of images">
-   <img src='{{image.basePath}}' />
-  </div>
+
+      <mat-selection-list [disableRipple]="true" #facilities (selectionChange)="updateFacilities(facilities.selectedOptions.selected)">
+        <mat-list-option *ngFor="let facility of typesOfFacilities" [value]="facility[0]">
+          <p>
+          <mat-icon>{{facility[1]}}</mat-icon>
+          {{facility[0]}}</p>
+        </mat-list-option>
+      </mat-selection-list>
+
+
+      <p>Amounts</p>
+      <mat-form-field appearance="outline">
+        <input matInput type="number" placeholder="Amount of bedrooms" formControlName="Bedrooms" />
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="outline">
+        <input matInput type="number" placeholder="Amount of Bathrooms" formControlName="Bathrooms" />
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="outline">
+        <input matInput type="number" placeholder="Amount of Toilets" formControlName="Toilets" />
+      </mat-form-field>
+      <br />
+    </div>
+
+    <button mat-raised-button>Save changes</button>
+
+    <div class="child2">
+      <button type="button" mat-raised-button (click)="fileInput.click()">Choose images</button>
+      <input hidden #fileInput type="file" multiple="multiple" accept="image/*" (change)="processImages($event)" />
+      <br />
+
+      <div class="image-container" *ngFor="let image of images">
+        <div class="image-dragger"><mat-icon style="cursor:pointer">drag_indicator</mat-icon></div>
+
+        <div class="image-holder"><img style="width:100%; height:100%" src='{{image.basePath}}' /></div>
+
+        <div class="image-remover">
+          <mat-icon  style="cursor:pointer" (click)="removeImage(image.fileName)">delete_sweep</mat-icon>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+

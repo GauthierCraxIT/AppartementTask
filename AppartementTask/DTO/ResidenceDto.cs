@@ -1,25 +1,25 @@
-﻿namespace AppartementTask.DAO
+﻿using AppartementTask.DTO;
+
+namespace AppartementTask.DAO
 {
     public class ResidenceDto
     {
-        public ResidenceDto(int id, int floors, int bathrooms, int bedrooms, int toilets, ResidenceType residenceType)
-        {
-            Id = id;
-            Floors = floors;
-            Bathrooms = bathrooms;
-            Bedrooms = bedrooms;
-            Toilets = toilets;
-            ResidenceType = residenceType;
-        }
-
-        public int Id { get; set; }
-
-        public int Floors { get; set; }
+        public string Name { get; set; }
         public int Bathrooms { get; set; }
-        public int Bedrooms { get; set; }
         public int Toilets { get; set; }
-        public string Summary { get; set; }
+        public int Bedrooms { get; set; }
+        public bool SwimmingPool { get; set; }
+        public bool Wifi { get; set; }
+        public bool Breakfast { get; set; }
+        public bool Kitchen { get; set; }
+        public bool Television { get; set; }
+        public bool NearbyBeach { get; set; }
+        public bool NearbyCity { get; set; }
+        public bool NearbySubway { get; set; }
+        public bool NearbyTrainStation { get; set; }
         public ResidenceType ResidenceType { get; set; }
+        public string Summary { get; set; }
+        public List<PictureDto> Pictures { get; set; }
 
 
 
