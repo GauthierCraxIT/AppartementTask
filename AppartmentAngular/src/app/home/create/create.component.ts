@@ -73,7 +73,7 @@ export class CreateComponent implements OnInit {
     }
 
     console.dir(residence);
-    this.residenceService.CreateFacility(residence);
+    this.residenceService.CreateResidence(residence);
   }
 
   updateFacilities(facilities: MatListOption[]) {

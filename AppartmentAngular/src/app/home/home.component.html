@@ -11,8 +11,8 @@
 </mat-toolbar>
 
 <div class="container" *ngIf="router.url === '/home'">
-  <mat-card class="example-card">
-    <img mat-card-image src="https://localhost:7096/images/appartement.png" alt="appartement placeholder">
+  <mat-card class="example-card" *ngFor="let residence of residences">
+    <img mat-card-image [src]="https://localhost:7096/images/residence.Name/{{residence.Pictures[0].fileName}}" alt="appartement placeholder">
     <mat-card-content>
       <span style="padding:0">Appartment in Turkey</span>
       <p style="margin-top:2vh">

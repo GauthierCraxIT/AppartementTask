@@ -24,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatListModule } from '@angular/material/list';
 import { HomeModule } from './home/home.module';
+import { DragDropModule } from '@angular/cdk/drag-drop'
 import { ResidenceService } from './residence.service';
 
 
@@ -46,6 +47,7 @@ import { ResidenceService } from './residence.service';
     MatListModule,
     MatFormFieldModule,
     MatInputModule,
+    DragDropModule,
     MatCheckboxModule,
     MatTabsModule,
     MatRadioModule,
