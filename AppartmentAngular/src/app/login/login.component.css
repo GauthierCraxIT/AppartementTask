@@ -1,0 +1,35 @@
+
+
+div.container {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100vw;
+    height:100vh;
+}
+
+form {
+  border: 1px solid #E6E6E6;
+  border-radius: 8px;
+  min-width: 15vw;
+  height: auto;
+  padding: 2vh;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+}
+
+button {
+  background: #E30A17 !important;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+input {
+    font-size:1.2em;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #191919;
+}

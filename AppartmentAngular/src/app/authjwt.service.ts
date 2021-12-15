@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../environments/environment.prod';
 import { UpdateTokenDto } from './.dto/UpdateTokenDto'
 
 @Injectable({
@@ -10,6 +11,18 @@ export class AuthjwtService {
 
   constructor(private http: HttpClient, public router: Router) { }
 
+
+  IsAdmin() {
+    return new Promise<boolean>((resolve) => {
+      var accessToken = localStorage.getItem("accesstoken");
+      if (accessToken != null) {
+
+        this.http.get<boolean>(environment.rootApi + "isadmin?accessToken=" + accessToken).subscribe(response => {
+          resolve(response as boolean);
+        });
+      }
+    })
+  }
 
   UpdateTokens() {
     var updateTokenDto: UpdateTokenDto = {

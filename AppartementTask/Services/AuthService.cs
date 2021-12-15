@@ -27,6 +27,24 @@ namespace AppartementTask.Services
             this.jwtTokenConfig = jwtTokenConfig;
         }
 
+        public bool IsAdmin(string accessToken)
+        {
+            ClaimsPrincipal claimsPrincipal = jwtAuthService.GetPrincipalFromToken(accessToken);
+
+            if (claimsPrincipal == null) 
+                return false;
+
+            string id = claimsPrincipal.Claims.First(x => x.Type == "id").Value;
+            var person = context.People.Find(id);
+            if (person == null)
+                return false;
+
+            var result = this.userManager.IsInRoleAsync(person, "admin").Result;
+            if (result == true)
+                return true;
+
+            return false;
+        }
 
 
         public SignInJwtResult Login(LoginDto loginDto)

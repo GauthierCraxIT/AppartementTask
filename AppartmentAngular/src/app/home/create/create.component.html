@@ -1,0 +1,17 @@
+
+
+
+<form *ngIf="router.url === '/create'">
+
+  <input type="text" placeholder="name" />
+
+  <input type="text" placeholder="location" />
+
+  <input type="file" multiple="multiple" accept="image/*" (change)="processImages($event)" />
+</form>
+
+
+
+  <div *ngFor="let image of images">
+   <img src='{{image.basePath}}' />
+  </div>

@@ -9,6 +9,16 @@ import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { AuthjwtService } from './authjwt.service';
+import { EditComponent } from './home/edit/edit.component';
+import { CreateComponent } from './home/create/create.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -16,13 +26,23 @@ import { AuthjwtService } from './authjwt.service';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    EditComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTabsModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [AuthService, AuthjwtService],
   bootstrap: [AppComponent]

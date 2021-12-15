@@ -76,5 +76,16 @@ namespace AppartementTask.Controllers
             else
                 return null;
         }
+
+
+        [HttpGet]
+        [Route("isadmin")]
+        public IActionResult IsAdmin(string accessToken)
+        {
+            Console.WriteLine("result finding out");
+            var result = this.authService.IsAdmin(accessToken);
+            Console.WriteLine("result: " + result);
+            return Ok(result);
+        }
     }
 }

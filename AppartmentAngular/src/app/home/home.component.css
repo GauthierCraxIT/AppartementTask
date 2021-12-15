@@ -1,0 +1,35 @@
+
+
+.mat-toolbar {
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1) !important;
+  background: white !important;
+}
+
+.container {
+    margin:auto;
+
+}
+
+span {
+  color: #E30A17;
+  font-size:1.4em;
+  padding-left:5px;
+}
+
+.example-card {
+  max-width: 40vw;
+  margin: auto;
+  margin-top: 5vh;
+}
+
+.example-header-image {
+  background-size: cover;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+a {
+    font-size:0.6em;
+}

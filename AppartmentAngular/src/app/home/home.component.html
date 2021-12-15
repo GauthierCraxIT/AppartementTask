@@ -1,1 +1,28 @@
-<p>home works!</p>
+
+<mat-toolbar class="mat-toolbar" *ngIf="router.url.startsWith('/home')">
+  <span>Hotel</span>
+  <span class="example-spacer"></span>
+  <span style="padding-right:10px">
+    <a mat-button [routerLink]="'/home'"> Home </a>
+    <a mat-button [routerLink]="'/about'"> About </a>
+    <a mat-raised-button color="warn" [routerLink]="'/login'" style="background: #E30A17"> Login </a>
+
+  </span>
+</mat-toolbar>
+
+<div class="container" *ngIf="router.url === '/home'">
+  <mat-card class="example-card">
+    <img mat-card-image src="https://localhost:7096/images/appartement.png" alt="appartement placeholder">
+    <mat-card-content>
+      <span style="padding:0">Appartment in Turkey</span>
+      <p style="margin-top:2vh">
+        <mat-icon> location_on</mat-icon>
+        Ankara Bartın Yolu, 74510 Karaman/Kurucaşile/Bartın, Turkije
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+
+<app-create></app-create>
