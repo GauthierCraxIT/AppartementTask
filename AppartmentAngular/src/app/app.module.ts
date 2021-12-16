@@ -11,7 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AuthjwtService } from './authjwt.service';
-import { CreateComponent } from './home/create/create.component';
+import { CreateComponent } from './cms/create/create.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
@@ -25,6 +25,8 @@ import { MatListModule } from '@angular/material/list';
 import { DragDropModule } from '@angular/cdk/drag-drop'
 import { ResidenceService } from './residence.service';
 import { DetailsComponent } from './home/details/details.component';
+import { CmsComponent } from './cms/cms.component';
+import { EditComponent } from './cms/edit/edit.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { DetailsComponent } from './home/details/details.component';
     RegisterComponent,
     HomeComponent,
     CreateComponent,
-    DetailsComponent
+    DetailsComponent,
+    CmsComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

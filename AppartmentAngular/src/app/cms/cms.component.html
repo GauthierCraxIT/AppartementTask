@@ -1,0 +1,39 @@
+<mat-toolbar class="mat-toolbar" *ngIf="router.url.startsWith('/cms')">
+  <span>Hotel</span>
+  <span class="example-spacer"></span>
+  <span style="padding-right:10px">
+    <a mat-button [routerLink]="'/home'"> Home </a>
+    <a mat-button [routerLink]="'/about'"> About </a>
+    <a mat-raised-button color="warn" [routerLink]="'/login'" style="background: #E30A17"> Login </a>
+
+  </span>
+</mat-toolbar>
+
+
+<div class="container" *ngIf="router.url === '/cms'">
+  <div class="header">
+    <span>My appartments</span>
+    <button (click)="router.navigate(['/cms/create'])" mat-raised-button color="warn">Create new</button>
+  </div>
+
+  <div class="list" *ngFor="let residence of residences">
+    <div class="residence">
+      <img src="https://localhost:7096/images/{{residence.name}}/{{residence.pictures[0].fileName}}" />
+      <div class="info">
+        <span>{{residence.name}}</span>
+        <br /><br />
+        <p>Location placeholder</p>
+      </div>
+    </div>
+
+    <div class="edit-residence">
+      <mat-icon (click)="router.navigate(['/cms/edit'], {queryParams: {name: residence.name}})">keyboard_arrow_right</mat-icon>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<app-create></app-create>
