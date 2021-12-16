@@ -30,11 +30,11 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
 
     this.listingForm = this.formBuilder.group({
-      Name: ["", [Validators.required]],
-      Summary: ["", [Validators.required]],
-      Bedrooms: ["", [Validators.required]],
-      Bathrooms: ["", [Validators.required]],
-      Toilets: ["", [Validators.required]],
+      name: ["", [Validators.required]],
+      summary: ["", [Validators.required]],
+      bedrooms: ["", [Validators.required]],
+      bathrooms: ["", [Validators.required]],
+      toilets: ["", [Validators.required]],
     });
   }
 
@@ -52,24 +52,24 @@ export class CreateComponent implements OnInit {
 
 
     var residence: ResidenceDto = {
-      Bathrooms: this.listingForm.controls["Bathrooms"].value as number,
-      Bedrooms: this.listingForm.controls["Bedrooms"].value as number,
-      Toilets: this.listingForm.controls["Toilets"].value as number,
-      Name: this.listingForm.controls["Name"].value,
-      Summary: this.listingForm.controls["Summary"].value,
+      bathrooms: this.listingForm.controls["bathrooms"].value as number,
+      bedrooms: this.listingForm.controls["bedrooms"].value as number,
+      toilets: this.listingForm.controls["toilets"].value as number,
+      name: this.listingForm.controls["name"].value,
+      summary: this.listingForm.controls["summary"].value,
 
-      Breakfast: this.checkFacility("Breakfast"),
-      Kitchen: this.checkFacility("Kitchen"),
-      SwimmingPool: this.checkFacility("Swimming pool"),
-      Television: this.checkFacility("Television"),
-      Wifi: this.checkFacility("Wifi"),
-      NearbyBeach: this.checkFacility("Nearby beach"),
-      NearbyCity: this.checkFacility("Nearby city"),
-      NearbySubway: this.checkFacility("Nearby subway"),
-      NearbyTrainStation: this.checkFacility("Nearby train station"),
+      breakfast: this.checkFacility("Breakfast"),
+      kitchen: this.checkFacility("Kitchen"),
+      swimmingPool: this.checkFacility("Swimming pool"),
+      television: this.checkFacility("Television"),
+      wifi: this.checkFacility("Wifi"),
+      nearbyBeach: this.checkFacility("Nearby beach"),
+      nearbyCity: this.checkFacility("Nearby city"),
+      nearbySubway: this.checkFacility("Nearby subway"),
+      nearbyTrainStation: this.checkFacility("Nearby train station"),
 
-      ResidenceType: 0,
-      Pictures: this.images
+      residenceType: 0,
+      pictures: this.images
     }
 
     console.dir(residence);
@@ -90,6 +90,8 @@ export class CreateComponent implements OnInit {
   }
 
   processImages(ev: any) {
+
+    this.images = [];
 
      new Promise<ImageDto[]>((resolve) => {
 

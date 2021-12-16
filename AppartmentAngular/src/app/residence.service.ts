@@ -19,6 +19,15 @@ export class ResidenceService {
     });
   }
 
+  GetResidenceByName(name: string) {
+    return new Promise<ResidenceDto>((resolve) => {
+      this.http.get<ResidenceDto>(environment.rootApi + "residence/byname?name=" + name).subscribe(response => {
+
+        resolve(response as ResidenceDto);
+      })
+    })
+  }
+
   GetRecidences() {
     return new Promise<ResidenceDto[]>((resolve) => {
       this.http.get<ResidenceDto[]>(environment.rootApi + "residence").subscribe(response => {

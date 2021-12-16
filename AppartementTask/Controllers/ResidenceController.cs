@@ -38,6 +38,16 @@ namespace AppartementTask.Controllers
             return new JsonResult(this.residenceService.GetResidences());
         }
 
+        [HttpGet]
+        [Route("byname")]
+        public IActionResult GetResidencesByName(string name)
+        {
+            while (name.Contains("%20"))
+                name = name.Replace("%20", " ");
+
+            return new JsonResult(this.residenceService.FindResidenceByName(name));
+        }
+
         [HttpPut]
         [Authorize(Roles = "Admin")]
         public IActionResult UpdateResidence(ResidenceDto residenceDto)

@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
 
     this.residenceService.GetRecidences().then(data => {
       this.residences = data;
+      console.dir(this.residences);
     });
   }
 
