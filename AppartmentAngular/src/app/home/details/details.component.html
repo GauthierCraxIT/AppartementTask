@@ -1,5 +1,42 @@
 
 <div *ngIf="router.url.startsWith('/home/details')">
 
+  <div class="container">
+
+    <div class="images">
+      <div class="first-image">
+        <img *ngIf="residence != null" src="https://localhost:7096/images/{{residence.name}}/{{residenceImage}}">;
+      </div>
+
+      <div class="image-list" *ngIf="residence != null">
+        <img *ngFor="let picture of residence.pictures; let i = index" (click)="residenceImage = residence.pictures[i].fileName" src="https://localhost:7096/images/{{residence.name}}/{{picture.fileName}}" />
+      </div>
+    </div>
+
+    <div class="residence">
+      <p>{{residence.name}}</p>
+
+      <p>Facilities</p>
+      <div class="facilities">
+        <div class="row">
+          <div class="column" *ngFor="let facility of usedFacilities">
+            <mat-icon>{{facility[1]}}</mat-icon>
+            {{facility[0]}}
+          </div>
+        </div>
+      </div>
+
+      <p>Description</p>
+      <p>{{residence.summary}}</p>
+
+      <p>Contact information</p>
+      <span>John doe</span><br />
+      <span>+32 485 221 495</span>
+
+    </div>
+
+  </div>
+
+
 
 </div>

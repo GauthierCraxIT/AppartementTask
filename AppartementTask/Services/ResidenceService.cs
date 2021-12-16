@@ -72,6 +72,10 @@ namespace AppartementTask.Services
         public ResidenceDto FindResidenceByName(string name)
         {
             var residence = this.residenceDao.FindByCondition<Residence>(x => x.Name.Equals(name));
+
+            var pics = this.pictureDao.Read<Picture>(f => f.Residence.Id == residence.Id);
+            residence.Pictures = pics;
+
             return mapper.Map<ResidenceDto>(residence);
         }
     }
